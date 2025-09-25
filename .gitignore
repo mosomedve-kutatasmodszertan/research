@@ -1,0 +1,5 @@
+# texmaker build files:
+*.aux
+*.log
+*.run.xml
+*.synctex.gz

@@ -1,0 +1,114 @@
+\documentclass[10pt,leqno,twoside]{article}
+
+\usepackage{annal-latex}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{draftwatermark}
+\usepackage{color}
+\usepackage[backend=bibtex, sortcites=true, style=numeric-comp]{biblatex}
+\usepackage{authblk}
+
+
+
+\addbibresource{research.bib}
+
+\SetWatermarkText{\textbf{FAKE RESEARCH}}
+\SetWatermarkLightness{0.85}
+\SetWatermarkAngle{60}
+\SetWatermarkScale{3.0}
+
+\begin{document}
+\setcounter{page}{1}
+
+\vspace{-4cm} \fofej{49}{19}{nn}{nnn}
+
+\vspace{.4cm}
+
+
+\title{Achieving Near-Zero Hallucation In Large Language Models}
+
+\author{{\bf Name} (City, Country)\\[1ex]
+{\bf Name} (City, Country)
+{\bf Name} (City, Country)
+{\bf Name} (City, Country)}
+
+\date{}
+
+
+
+\abstract{This paper presents our research methodology centered around eliminating the modern LLMs' hallucination.The initial task involved creating and training a model from scratch conform Google's "Attention is All You Need" paper, and measuring the extent to which hallucination is present in the output based on the training data. We acquired these measurements after performing several training rounds over multiple models of the same size with data of varying quality and truthfulness resulting in models with varying knowledge. These findings showed that not only data quality but also the model architecture had to be refined, so we implemented some modifications in the model architecture as well. With the modified architecture we trained a model on high quality data, which resulted in eliminating hallucination in our model in 99.998\% of the test cases.}
+
+
+% ---------------------------------------------------------------
+
+
+\section{Introduction}
+Your introduction
+
+\subsection{Related work}
+Works related to your paper
+
+\section{Methodology}
+\subsection{Methodology subsection}
+Your methodology
+
+\section{Results}
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrr}
+\toprule
+A & B & C \\
+\midrule
+A1 & B1 & C1\\
+A2 & B2 & C2\\
+A3 & B3 & C3\\
+A4 & B4 & C4\\
+\bottomrule
+\end{tabular}
+\caption{\label{tab:train}The summary of the table}
+\end{table}
+
+Reference to the Table \ref{tab:res} on page \pageref{tab:res} and a cite \cite{reversing}.
+
+% ---------------------------------------------------------------
+
+
+\section{Discussion} % Conclusions, Further research
+Your discussion
+
+\section*{Acknowledgment}
+Your acknowledgement
+
+\printbibliography[title=References]
+
+
+\clearpage
+\vspace{2cm}
+
+\noindent\textbf{Zoltán Blahovics}\\
+Department of Computer Science\\Eötvös Loránd University\\Pázmány Péter Sétány 1/C Budapest, Hungary\\
+Budapest\\
+Hungary\\
+{\tt email}\\
+
+\noindent\textbf{Bence Nagy}\\
+Department of Computer Science\\Eötvös Loránd University\\Pázmány Péter Sétány 1/C Budapest, Hungary\\
+Budapest\\
+Hungary\\
+{\tt email}\\
+
+\noindent\textbf{Krisztián Nemes-Kovács}\\
+Department of Computer Science\\Eötvös Loránd University\\Pázmány Péter Sétány 1/C Budapest, Hungary\\
+Budapest\\
+Hungary\\
+{\tt email}\\
+
+\noindent\textbf{Balázs Fekete}\\
+Department of Computer Science\\Eötvös Loránd University\\Pázmány Péter Sétány 1/C Budapest, Hungary\\
+Budapest\\
+Hungary\\
+{\tt email}\\
+
+\end{document}

@@ -1,0 +1,219 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                                                    %%%
+%%% IMPORTANT: In case of any problems contact ac@compalg.inf.elte.hu  %%%
+%%%                                                                    %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%
+\newcommand\commby[1]{\noindent\begin{center}Communicated by #1\end{center}}
+\newcommand\recacc[2]{\noindent\begin{center}(Received #1; accepted #2)\end{center}}
+\newcommand\recrevacc[3]{\noindent\begin{center}(Received #1; revised #2;\\ accepted #3)\end{center}}
+%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\newcommand{\keywords}[1]{\footnotetext[0]{\noindent\hbox to -6mm{}\emph{Key words and phrases\/}: #1}}
+
+\newcommand{\mathclass}[1]{\footnotetext[0]{\noindent\hbox to -6mm{}\emph{2010 Mathematics Subject Classification\/}: #1}}
+
+\newcommand{\compclass}[1]{\footnotetext[0]{\noindent\hbox to -6mm{}\emph{1998 CR Categories and Descriptors\/}: #1}}
+
+\newcommand{\projsupport}[1]{\footnotetext[0]{\noindent\hbox to -6mm{}#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\oddsidemargin}{2mm}
+\setlength{\evensidemargin}{\oddsidemargin}
+\setlength{\topmargin}{-4mm} \setlength{\textwidth}{12cm}
+\setlength{\textheight}{18cm} \setlength{\headheight}{1cm}
+\setlength{\headsep}{4mm}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsfonts,amsmath, amsthm}
+\usepackage{fancyhdr}
+\usepackage{amssymb,amsbsy}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \fancyhead[RL]{} {\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO]{\jobbline} \fancyhead[RE]{\balline} \fancyhead[C]{}}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0.5pt}
+\pagestyle{fancy}
+\newcommand\fofej[4]{\thispagestyle{empty}
+\noindent
+\parbox[t][1cm]{\textwidth} {\underline{\underline{\makebox[\textwidth]{\hfill\itshape{Local Conference of Imaginary Results LCIR2023/6}\hfill}}}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand\title[1]{\noindent
+\begin{center}{{\large\bf{#1}}}\end{center}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand\author[1]{\noindent\begin{center} #1\end{center}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand\abstract[1]{ \vspace{2cm}
+\indent \indent\parbox{10.5cm} {\small{{\bf Abstract.}
+#1}}\vspace{.5cm}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\MSC[1]{{\noindent \em Mathematical Subject Classification:} #1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \@addtoreset{section}{part} \@addtoreset{equation}{section}
+ \renewcommand\@seccntformat[1]{\csname the#1\endcsname.\quad}
+\renewcommand \thesection {\@arabic\c@section}
+\renewcommand\thesubsection   {\thesection.\@arabic\c@subsection}
+\renewcommand\thesubsubsection{\thesubsection.\@arabic\c@subsubsection}
+\renewcommand\theparagraph    {\thesubsubsection.\@arabic\c@paragraph}
+\renewcommand\thesubparagraph {\theparagraph.\@arabic\c@subparagraph}
+\renewcommand \theequation {\thesection.\@arabic\c@equation}
+
+
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+%                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {1cm \@plus -.2ex \@minus -.2ex}%
+%                                   {2.3ex \@plus.2ex}%
+                                   {1cm \@plus -.2ex \@minus -.2ex}%
+                                   {\normalfont\normalsize\bfseries\boldmath }}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+%                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {.5cm\@plus -.2ex \@minus -.2ex}%
+%                                     {1.5ex \@plus -.2ex}%
+                                     {.5cm \@plus -.2ex \@minus -.2ex}%
+                                     {\normalfont\normalsize\bfseries\boldmath}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                     {.3cm\@plus -.1ex \@minus -.2ex}%
+                                     {.3cm \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries\boldmath}}
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                                    {.2cm \@plus1ex \@minus.2ex}%
+                                    {-1em}%
+                                    {\normalfont\normalsize}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                       {.2cm \@plus1ex \@minus .2ex}%
+                                       {-1em}%
+                                     {\normalfont\normalsize}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \renewcommand\figurename{{\em Figure}}
+\renewcommand\tablename{{\em Table}}
+
+\setlength{\parskip}{3pt plus 1pt minus 1pt}
+
+\renewcommand\@makecaption[2]{%
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{#1. #2}%
+  \ifdim \wd\@tempboxa >\hsize
+    #1. #2\par
+  \else
+    \global \@minipagefalse
+    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}
+
+\setlength{\floatsep}   {6\p@ \@plus 2\p@ \@minus 2\p@}
+\setlength{\textfloatsep}{8\p@ \@plus 2\p@ \@minus 4\p@}
+\setlength{\intextsep}  {10\p@ \@plus 2\p@ \@minus 2\p@}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewenvironment{thebibliography}[1]
+     {\section*{\begin{center}\refname\end{center}}%
+
+      \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}%
+      \list{\@biblabel{\@arabic\c@enumiv}}
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            %\@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength\itemsep{1\p@ plus 1\p@ minus 1\p@}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newtheorem{thm}{\indent Theorem}[section]
+%\newtheorem{theorem}{\indent Theorem}%[section]
+%\newtheorem{subtheorem}{\indent Theorem}[subsection]
+%\newtheorem{subsubtheorem}{\indent Theorem}[subsubsection]
+%\newtheorem{definition}{\indent Definition}[section]
+%\newtheorem{subdefinition}{\indent Definition}[subsection]
+%\newtheorem{subsubdefinition}{\indent Definition}[subsubsection]
+%\newtheorem{lemma}{\indent Lemma}[section]
+%\newtheorem{sublemma}{\ indent Lemma}[subsection]
+%\newtheorem{subsublemma}{\indent Lemma}[subsubsection]
+%\newtheorem{proposition}{\indent Proposition}[section]
+%\newtheorem{subproposition}{\indent Proposition}[section]
+%\newtheorem{subsubproposition}{\indent Proposition}[section]
+%\newtheorem{prop}{\indent Proposition}[section]
+%\newtheorem{example}{\indent Example}[section]
+%\newtheorem{subexample}{\indent Example}[subsection]
+%\newtheorem{subsubexample}{\indent Example}[subsubsection]
+%\newtheorem{corollary}{\indent Corollary}[theorem]
+%\newtheorem{subcorollary}{\indent Corollary}[subtheorem]
+%\newtheorem{subsubcorollary}{\indent Corollary}[subsubtheorem]
+%\newtheorem{corprop}{\indent Corollary}[proposition]
+%\newtheorem{subcorprop}{\indent Corollary}[subproposition]
+%\newtheorem{subsubcorprop}{\indent Corollary}[subsubproposition]
+%\def\@begintheorem#1#2{\trivlist
+%   \item[\hskip
+% \labelsep
+%   {\bfseries #1\ #2.}]\itshape{}}
+\renewcommand\proof{\noindent \textbf{Proof.} }
+\def\qed{\hfill $\blacksquare$} %%bizonyítés vége
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\rr{\mathbb{R}}
+\def\nn{\mathbb{N}}
+
+\def\kk{\mathbb{K}}
+
+\def\cc{\mathbb{C}}
+%\def\gg{\mathbb{G}}
