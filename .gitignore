@@ -3,3 +3,7 @@
 *.log
 *.run.xml
 *.synctex.gz
+research.bbl
+research.blg
+research.fdb_latexmk
+research.fls
