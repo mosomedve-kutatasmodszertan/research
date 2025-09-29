@@ -7,7 +7,7 @@
 \usepackage{tikz}
 \usepackage{draftwatermark}
 \usepackage{color}
-\usepackage[backend=bibtex, sortcites=true, style=numeric-comp]{biblatex}
+\usepackage[backend=bibtex, sortcites=true, style=numeric-comp, sorting=none]{biblatex}
 \usepackage{authblk}
 
 
@@ -39,7 +39,7 @@
 
 
 \abstract{
-This paper presents a research methodology focused on the mitigation of hallucinations in modern large language models.  The initial phase involved the development and training of a models following the framework established in Google’s “Attention Is All You Need” paper. The degree of hallucination present in the model outputs was then systematically measured with respect to the training data. These measurements were obtained after multiple training iterations conducted on models of identical size but trained on datasets differing in quality and factual reliability, thereby yielding models with varying levels of knowledge representation. The results indicated that both data quality and model architecture contributed significantly to the prevalence of hallucinations. Consequently, architectural modifications were introduced, after which a model was trained on high-quality data. This revised configuration achieved a reduction of hallucinations in 96.4\% of test cases.
+This paper presents a research methodology focused on the mitigation of hallucinations in modern large language models.  The initial phase involved the development and training of a models following the framework established in Google’s “Attention Is All You Need” \cite{vaswani2017attention} paper. The degree of hallucination present in the model outputs was then systematically measured with respect to the training data. These measurements were obtained after multiple training iterations conducted on models of identical size but trained on datasets differing in quality and factual reliability, thereby yielding models with varying levels of knowledge representation. The results indicated that both data quality and model architecture contributed significantly to the prevalence of hallucinations. Consequently, architectural modifications were introduced, after which a model was trained on high-quality data. This revised configuration achieved a reduction of hallucinations in 96.4\% of test cases.
 \textcolor{red}{\newline This research paper is for a Research Methodology course at ELTE University. The data in it is made up, and should not be taken seriously or referenced.}}
 
 
