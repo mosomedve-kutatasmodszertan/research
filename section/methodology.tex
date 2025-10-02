@@ -1,0 +1,49 @@
+\section{Experimental Design and Methodology}
+\label{sec:methodology}
+
+The experimental investigation was conducted in two sequential phases: first, establishing a robust performance baseline and quantifying the relationship between training data reliability and hallucination prevalence \cite{islam2024comprehensive, cossio2025comprehensive, cao2021hallucination}; and second, implementing and evaluating the novel architectural intervention.
+
+\subsection{Phase 1: Baseline Establishment and Data Quality Analysis}
+\label{sec:phase1}
+
+\subsubsection{Model Initialization and Data Corpus Formalization}
+\label{sec:model_data_formalization}
+All comparative experiments utilized the \textbf{Canonical Transformer Model} as the foundational architecture, strictly instantiated according to the specifications of \cite{vaswani2017attention}. A standard configuration was employed (e.g., \textbf{6 encoder layers, 6 decoder layers, and 8 attention heads}) \cite{vaswani2017attention}. All initializations used a standard parameter initialization and an Adam optimizer with the inverse square-root learning rate schedule \cite{vaswani2017attention}.
+
+The experimental corpora were constructed from large-scale, publicly available datasets, segregated into two categories based on empirical reliability ratings:
+
+\begin{itemize}
+    \item \textbf{Low-Reliability Corpus} ($\mathcal{D}_{\text{LR}}$): Comprised of tokens sampled from \textit{Reddit (2020 snapshot)}, \textit{Common Crawl WET files}, and \textit{WikiAnswers community data}. Prior work (\cite{cao2021hallucination, islam2024comprehensive, cossio2025comprehensive}) has demonstrated high factual heterogeneity and weak source attribution in these domains.
+    \item \textbf{High-Reliability Corpus} ($\mathcal{D}_{\text{HR}}$): Comprised of tokens from \textit{English Wikipedia (2023-06 dump)}, the \textit{Stanford Question Answering Dataset (SQuAD v2)} \cite{rajpurkar2018squadv2}, and the \textit{Natural Questions Open dataset} \cite{kwiatkowski2019natural}. These sources underwent strict deduplication and factuality validation, exhibiting high human-rated factual consistency in preliminary audits.
+\end{itemize}
+
+\subsubsection{Differential Baseline Training and Factual Integrity Quantification}
+\label{sec:baseline_training_quantification}
+Two baseline models were trained to empirically isolate the causal effect of training data reliability on factual consistency. Both followed an \textbf{identical training regimen} (e.g., same number of training steps, batch size, and dropout rate).
+
+\begin{itemize}
+    \item \textbf{Baseline $B_1$}: Trained exclusively on the Low-Reliability Corpus ($\mathcal{D}_{\text{LR}}$).
+    \item \textbf{Baseline $B_2$}: Trained exclusively on the High-Reliability Corpus ($\mathcal{D}_{\text{HR}}$).
+\end{itemize}
+
+Factual adherence was quantified via the \textbf{Hallucination Rate} ($\text{HR}$) \cite{islam2024comprehensive, cossio2025comprehensive}, defined as the proportion of generated responses containing at least one factually incorrect claim when benchmarked against the held-out, human-annotated Factual Test Set ($\mathcal{T}_{\text{Fact}}$). $\mathcal{T}_{\text{Fact}}$ consisted of evaluation prompts, sampled equally from the \textit{FEVER dataset} \cite{thorne2018fever} and the \textit{TruthfulQA benchmark} \cite{lin2021truthfulqa}. Expert annotators rated each model's output, achieving strong inter-annotator agreement.
+
+\subsection{Phase 2: Architectural Intervention and Evaluation}
+\label{sec:phase2_intervention}
+
+\subsubsection{Integration of the Layer-Specific Factual Gate (LSFG)}
+\label{sec:lsfg_integration}
+To mitigate the persistent issue of factual drift in generative transformers \cite{islam2024comprehensive, cossio2025comprehensive}, we introduced the Layer-Specific Factual Gate ($\text{LSFG}$) into the decoder of the baseline model. Specifically, the intervention targets the final decoder layers, replacing their standard Feed-Forward Networks ($\text{FFN}$) \cite{vaswani2017attention} with a novel Gated Factual Network ($\text{GFN}$) The gating mechanism enforces selective suppression of activations contributing to factual inconsistency, formalized as:
+
+\[
+\text{Output} = g \odot \text{FFN}(z), \quad \text{where} \quad g = \sigma(W_g z + b_g)
+\]
+
+\noindent
+where $z$ is the input to the FFN, $W_g$ and $b_g$ are the learned gating parameters, $\sigma$ is the element-wise sigmoid activation, and $\odot$ denotes Hadamard product. This gating mechanism provides a dynamic factual fidelity filter over the representational space of the terminal layers.
+
+\subsubsection{Training Regime for the Experimental Model ($M_{\text{LSFG}}$)}
+\label{sec:experimental_training}
+The experimental model, designated $M_{\text{LSFG}}$, was trained exclusively on the High-Reliability Corpus ($\mathcal{D}_{\text{HR}}$) under an identical regimen to Baseline $B_2$ (training steps, batch size, optimizer configuration, and schedule). This ensured that any measured improvements could be unambiguously attributed to the $\text{LSFG}$ intervention rather than differences in training exposure.
+
+The optimization objective was the \textbf{Standard Cross-Entropy Loss} with label smoothing \cite{vaswani2017attention}. This loss function implicitly optimized $W_g$ and $b_g$ to minimize the likelihood of factually incorrect generations during training.
