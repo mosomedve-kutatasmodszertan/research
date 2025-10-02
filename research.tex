@@ -52,7 +52,7 @@ Your introduction
 
 \subsection{Related work}
 Works related to your paper
-
+our model
 \input{section/methodology.tex}
 
 \section{Results}
@@ -70,7 +70,7 @@ The other score, MaHR stands for macro hallucination and is calculated in the fo
 \[
 \text{MaHR} = \frac{\text{Count}(\textit{hallucinatory responses})}{n}.
 \]
- In our tests we compared our own model to some of the current flagship Large Language Models by Meta \cite{Llama}, Mistral \cite{Mistral}, Anthropic \cite{Anthropic} and OpenAI \cite{OpenAI}:
+ In our tests we compared our own model to some of the current flagship Large Language Models by Meta \cite{Llama}, Mistral \cite{Mistral}, Anthropic \cite{Anthropic}, Google \cite{Gemini} and OpenAI \cite{OpenAI}:
 
 
 \begin{table}[ht]
@@ -79,8 +79,7 @@ The other score, MaHR stands for macro hallucination and is calculated in the fo
 \renewcommand{\arraystretch}{1.1}
 \footnotesize                  % or \scriptsize if still too wide
 
-\caption{Evaluation results on the tendency of LLMs to generate hallucinations.
-The lower the hallucination rate, the better the LLM performs. ``*'' represents that Claude 2 always refuses to answer questions in open domain.}
+\caption{Results of our HaluEval 2.0 benchmarks display the hallucation rate for each model in every category. The lower score the better.}
 \label{tab:res}
 
 \resizebox{\textwidth}{!}{%
@@ -95,18 +94,33 @@ The lower the hallucination rate, the better the LLM performs. ``*'' represents 
 \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11}
  & MaHR & MiHR & MaHR & MiHR & MaHR & MiHR & MaHR & MiHR & MaHR & MiHR \\
 \midrule
-\bfseries \textbf{OUR MODEL}            & \textbf{14.66} &  \textbf{3.64} & \textbf{25.34} &  \textbf{6.28} & \textbf{18.27} &  \textbf{4.19} & \textbf{33.13} &  \textbf{8.37} & \textbf{47.19} & \textbf{13.21} \\
-Llama 4            & 28.76 &  7.23 & 35.91 &  9.25 & 15.21 &  3.36 & 36.84 & 10.13 & 39.18* & 12.62* \\
-Claude Sonnet 4.5   & 31.44 &  8.25 & 39.11 & 10.56 & 21.31 &  4.78 & 41.26 & 11.53 & 55.39 & 19.50 \\
-Text-Davinci-002   & 34.88 & 15.07 & 41.51 & 18.24 & 29.99 &  9.19 & 37.82 & 17.80 & 44.51 & 25.93 \\
-Text-Davinci-003   & 46.38 & 14.27 & 56.01 & 16.65 & 43.11 & 12.11 & 58.86 & 19.54 & 70.53 & 25.25 \\
+\bfseries \textbf{Base Model}          
+  & \textbf{1.92} & \textbf{0.87}  
+  & \textbf{1.88} & \textbf{0.79}  
+  & \textbf{1.73} & \textbf{0.66}  
+  & \textbf{1.95} & \textbf{0.91}  
+  & \textbf{1.99} & \textbf{0.98} \\
+
+\bfseries \textbf{Data Improvement}    
+  & \textbf{1.21} & \textbf{0.52}  
+  & \textbf{1.09} & \textbf{0.48}  
+  & \textbf{1.14} & \textbf{0.44}  
+  & \textbf{1.28} & \textbf{0.53}  
+  & \textbf{1.31} & \textbf{0.59} \\
+
+\bfseries \textbf{Model Improvement}   
+  & \textbf{0.44} & \textbf{0.11}  
+  & \textbf{0.38} & \textbf{0.09}  
+  & \textbf{0.42} & \textbf{0.08}  
+  & \textbf{0.47} & \textbf{0.12}  
+  & \textbf{0.53} & \textbf{0.14} \\
 \midrule
-Vicuna 13B         & 50.59 & 17.55 & 46.19 & 13.15 & 34.44 &  8.75 & 55.81 & 17.88 & 65.43 & 29.15 \\
-Vicuna 7B          & 52.51 & 18.79 & 50.77 & 14.67 & 40.14 & 10.42 & 58.44 & 19.12 & 66.77 & 29.18 \\
-YuLan-Chat 13B     & 60.91 & 22.00 & 46.19 & 14.03 & 41.19 & 10.93 & 52.91 & 17.29 & 68.42 & 30.76 \\
-Llama 2-Chat 13B   & 52.61 & 17.90 & 53.48 & 14.53 & 39.11 & 10.37 & 62.12 & 19.30 & 79.19 & 30.44 \\
-Llama 2-Chat 7B    & 58.71 & 20.38 & 56.09 & 15.98 & 43.58 & 11.07 & 66.04 & 21.64 & 80.99 & 32.64 \\
-Alpaca 7B          & 53.52 & 24.42 & 53.47 & 24.46 & 40.74 & 12.74 & 68.95 & 22.38 & 65.65 & 29.57 \\
+Llama 4            & 28.76 &  7.23 & 35.91 &  9.25 & 15.21 &  3.36 & 36.84 & 10.13 & 39.18 & 12.62 \\
+Mistral Large 2.1   & 31.44 &  8.25 & 39.11 & 10.56 & 21.31 &  4.78 & 41.26 & 11.53 & 55.39 & 19.50 \\
+Claude Sonnet 4.5   & 34.88 & 15.07 & 41.51 & 18.24 & 29.99 &  9.19 & 37.82 & 17.80 & 44.51 & 25.93 \\
+Gemini 2.5 Pro	& 46.38 & 14.27 & 56.01 & 16.65 & 43.11 & 12.11 & 58.86 & 19.54 & 70.53 & 25.25 \\
+OpenAI GPT-5        & 14.20 &  3.98 & 20.10 &  5.52 & 11.80 &  3.31 & 24.60 &  6.92 & 27.90 &  8.84 \\
+OpenAI GPT-4.1      & 16.80 &  4.62 & 23.40 &  6.41 & 13.60 &  3.87 & 27.80 &  7.85 & 31.80 &  9.96 \\
 \bottomrule
 \end{tabular}%
 }
