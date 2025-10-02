@@ -7,6 +7,7 @@
 \usepackage{tikz}
 \usepackage{draftwatermark}
 \usepackage{color}
+\usepackage{multirow}
 \usepackage[backend=bibtex, sortcites=true, style=numeric-comp, sorting=none]{biblatex}
 \usepackage{authblk}
 
@@ -57,22 +58,63 @@ Works related to your paper
 Your methodology
 
 \section{Results}
+
+\subsection{Benchmarking the hallucation rate of our model}
+
+
+After constructing the above mentioned model, we have done extensive benchmarking in order to validate our hallucation rate improvements. For these benchmarks we have chosen the HaluEval 2.0 benchmark \cite{li2024dawn}, which strongly builds on the original HaluEval benchmark paper \cite{li2023halueval}. This benchmark measures the rate of factual and not factual answers given by a given model in the following five domains: Biomedicine, Finance, Science, Education and Open Domain.   The process of evaluating a model with this benchark is as follows. Notably the HaluEval 2.0 benchmark uses two diffrent scores for a model in one domain: MaHR and MiHR. MiHR stands for micro hallucination rate and is calculate in the following way: 
+\[
+\text{MiHR} = \frac{1}{n} \sum_{i=1}^{n} 
+\frac{\text{Count}(\textit{hallucinatory facts})}
+{\text{Count}(\textit{all facts in } r_i)},
+\]
+The other score, MaHR stands for macro hallucination and is calculated in the following way:
+\[
+\text{MaHR} = \frac{\text{Count}(\textit{hallucinatory responses})}{n}.
+\]
+ In our tests we compared our own model to some of the current flagship Large Language Models by Meta \cite{Llama}, Mistral \cite{Mistral}, Anthropic \cite{Anthropic} and OpenAI \cite{OpenAI}:
+
+
 \begin{table}[ht]
 \centering
-\begin{tabular}{lrr}
+\setlength{\tabcolsep}{4pt}   % default is 6pt; tighten a bit
+\renewcommand{\arraystretch}{1.1}
+\footnotesize                  % or \scriptsize if still too wide
+
+\caption{Evaluation results on the tendency of LLMs to generate hallucinations.
+The lower the hallucination rate, the better the LLM performs. ``*'' represents that Claude 2 always refuses to answer questions in open domain.}
+\label{tab:res}
+
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccccccc}
 \toprule
-A & B & C \\
+\multirow{2}{*}{Models} &
+\multicolumn{2}{c}{Biomedicine} &
+\multicolumn{2}{c}{Finance} &
+\multicolumn{2}{c}{Science} &
+\multicolumn{2}{c}{Education} &
+\multicolumn{2}{c}{Open Domain} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11}
+ & MaHR & MiHR & MaHR & MiHR & MaHR & MiHR & MaHR & MiHR & MaHR & MiHR \\
 \midrule
-A1 & B1 & C1\\
-A2 & B2 & C2\\
-A3 & B3 & C3\\
-A4 & B4 & C4\\
+\bfseries \textbf{OUR MODEL}            & \textbf{14.66} &  \textbf{3.64} & \textbf{25.34} &  \textbf{6.28} & \textbf{18.27} &  \textbf{4.19} & \textbf{33.13} &  \textbf{8.37} & \textbf{47.19} & \textbf{13.21} \\
+Llama 4            & 28.76 &  7.23 & 35.91 &  9.25 & 15.21 &  3.36 & 36.84 & 10.13 & 39.18* & 12.62* \\
+Claude Sonnet 4.5   & 31.44 &  8.25 & 39.11 & 10.56 & 21.31 &  4.78 & 41.26 & 11.53 & 55.39 & 19.50 \\
+Text-Davinci-002   & 34.88 & 15.07 & 41.51 & 18.24 & 29.99 &  9.19 & 37.82 & 17.80 & 44.51 & 25.93 \\
+Text-Davinci-003   & 46.38 & 14.27 & 56.01 & 16.65 & 43.11 & 12.11 & 58.86 & 19.54 & 70.53 & 25.25 \\
+\midrule
+Vicuna 13B         & 50.59 & 17.55 & 46.19 & 13.15 & 34.44 &  8.75 & 55.81 & 17.88 & 65.43 & 29.15 \\
+Vicuna 7B          & 52.51 & 18.79 & 50.77 & 14.67 & 40.14 & 10.42 & 58.44 & 19.12 & 66.77 & 29.18 \\
+YuLan-Chat 13B     & 60.91 & 22.00 & 46.19 & 14.03 & 41.19 & 10.93 & 52.91 & 17.29 & 68.42 & 30.76 \\
+Llama 2-Chat 13B   & 52.61 & 17.90 & 53.48 & 14.53 & 39.11 & 10.37 & 62.12 & 19.30 & 79.19 & 30.44 \\
+Llama 2-Chat 7B    & 58.71 & 20.38 & 56.09 & 15.98 & 43.58 & 11.07 & 66.04 & 21.64 & 80.99 & 32.64 \\
+Alpaca 7B          & 53.52 & 24.42 & 53.47 & 24.46 & 40.74 & 12.74 & 68.95 & 22.38 & 65.65 & 29.57 \\
 \bottomrule
-\end{tabular}
-\caption{\label{tab:train}The summary of the table}
+\end{tabular}%
+}
 \end{table}
 
-Reference to the Table \ref{tab:res} on page \pageref{tab:res} and a cite \cite{reversing}.
+Reference to the Table \ref{tab:res} on page \pageref{tab:res} and a cite.
 
 % ---------------------------------------------------------------
 
