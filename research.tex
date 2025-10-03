@@ -7,6 +7,7 @@
 \usepackage{tikz}
 \usepackage{draftwatermark}
 \usepackage{color}
+\usepackage{multirow}
 \usepackage[backend=bibtex, sortcites=true, style=numeric-comp, sorting=none]{biblatex}
 \usepackage{authblk}
 
@@ -51,27 +52,11 @@ Your introduction
 
 \subsection{Related work}
 Works related to your paper
-
 \input{section/methodology.tex}
 
 \section{Results}
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrr}
-\toprule
-A & B & C \\
-\midrule
-A1 & B1 & C1\\
-A2 & B2 & C2\\
-A3 & B3 & C3\\
-A4 & B4 & C4\\
-\bottomrule
-\end{tabular}
-\caption{\label{tab:train}The summary of the table}
-\end{table}
 
-Reference to the Table \ref{tab:res} on page \pageref{tab:res} and a cite \cite{reversing}.
-
+\input{section/benchmark.tex}
 % ---------------------------------------------------------------
 
 
