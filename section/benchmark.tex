@@ -18,14 +18,14 @@ The first three rows of Table~\ref{tab:res} illustrate the progressive effect of
 
 \begin{table}[ht]
 \centering
-\setlength{\tabcolsep}{4pt}   % default is 6pt; tighten a bit
+\setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.1}
-\footnotesize                  % or \scriptsize if still too wide
+\footnotesize
 
 \caption{HaluEval 2.0 hallucination rates (MaHR and MiHR) across five domains. Results are shown for our baseline model, data-improved model, and architecture-improved model, against other current flagship LLM models. Lower is better.}
 \label{tab:res}
 
-\resizebox{\textwidth}{!}{%
+\resizebox{\textwidth}{!}{
 \begin{tabular}{lcccccccccc}
 \toprule
 \multirow{2}{*}{Models} &
@@ -65,7 +65,7 @@ Gemini 2.5 Pro	& 46.38 & 14.27 & 56.01 & 16.65 & 43.11 & 12.11 & 58.86 & 19.54 &
 OpenAI GPT-5        & 14.20 &  3.98 & 20.10 &  5.52 & 11.80 &  3.31 & 24.60 &  6.92 & 27.90 &  8.84 \\
 OpenAI GPT-4.1      & 16.80 &  4.62 & 23.40 &  6.41 & 13.60 &  3.87 & 27.80 &  7.85 & 31.80 &  9.96 \\
 \bottomrule
-\end{tabular}%
+\end{tabular}
 }
 \end{table}
 
