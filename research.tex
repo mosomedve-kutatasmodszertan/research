@@ -57,77 +57,7 @@ our model
 
 \section{Results}
 
-\subsection{Benchmarking the hallucation rate of our model}
-
-
-After constructing the above mentioned model, we have done extensive benchmarking in order to validate our hallucation rate improvements. For these benchmarks we have chosen the HaluEval 2.0 benchmark \cite{li2024dawn}, which strongly builds on the original HaluEval benchmark paper \cite{li2023halueval}. This benchmark measures the rate of factual and not factual answers given by a given model in the following five domains: Biomedicine, Finance, Science, Education and Open Domain.   The process of evaluating a model with this benchark is as follows. Notably the HaluEval 2.0 benchmark uses two diffrent scores for a model in one domain: MaHR and MiHR. MiHR stands for micro hallucination rate and is calculate in the following way: 
-\[
-\text{MiHR} = \frac{1}{n} \sum_{i=1}^{n} 
-\frac{\text{Count}(\textit{hallucinatory facts})}
-{\text{Count}(\textit{all facts in } r_i)},
-\]
-The other score, MaHR stands for macro hallucination and is calculated in the following way:
-\[
-\text{MaHR} = \frac{\text{Count}(\textit{hallucinatory responses})}{n}.
-\]
- In our tests we compared our own model to some of the current flagship Large Language Models by Meta \cite{Llama}, Mistral \cite{Mistral}, Anthropic \cite{Anthropic}, Google \cite{Gemini} and OpenAI \cite{OpenAI}:
-
-
-\begin{table}[ht]
-\centering
-\setlength{\tabcolsep}{4pt}   % default is 6pt; tighten a bit
-\renewcommand{\arraystretch}{1.1}
-\footnotesize                  % or \scriptsize if still too wide
-
-\caption{Results of our HaluEval 2.0 benchmarks display the hallucation rate for each model in every category. The lower score the better.}
-\label{tab:res}
-
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{lcccccccccc}
-\toprule
-\multirow{2}{*}{Models} &
-\multicolumn{2}{c}{Biomedicine} &
-\multicolumn{2}{c}{Finance} &
-\multicolumn{2}{c}{Science} &
-\multicolumn{2}{c}{Education} &
-\multicolumn{2}{c}{Open Domain} \\
-\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11}
- & MaHR & MiHR & MaHR & MiHR & MaHR & MiHR & MaHR & MiHR & MaHR & MiHR \\
-\midrule
-\bfseries \textbf{Base Model}          
-  & \textbf{1.92} & \textbf{0.87}  
-  & \textbf{1.88} & \textbf{0.79}  
-  & \textbf{1.73} & \textbf{0.66}  
-  & \textbf{1.95} & \textbf{0.91}  
-  & \textbf{1.99} & \textbf{0.98} \\
-
-\bfseries \textbf{Data Improvement}    
-  & \textbf{1.21} & \textbf{0.52}  
-  & \textbf{1.09} & \textbf{0.48}  
-  & \textbf{1.14} & \textbf{0.44}  
-  & \textbf{1.28} & \textbf{0.53}  
-  & \textbf{1.31} & \textbf{0.59} \\
-
-\bfseries \textbf{Model Improvement}   
-  & \textbf{0.44} & \textbf{0.11}  
-  & \textbf{0.38} & \textbf{0.09}  
-  & \textbf{0.42} & \textbf{0.08}  
-  & \textbf{0.47} & \textbf{0.12}  
-  & \textbf{0.53} & \textbf{0.14} \\
-\midrule
-Llama 4            & 28.76 &  7.23 & 35.91 &  9.25 & 15.21 &  3.36 & 36.84 & 10.13 & 39.18 & 12.62 \\
-Mistral Large 2.1   & 31.44 &  8.25 & 39.11 & 10.56 & 21.31 &  4.78 & 41.26 & 11.53 & 55.39 & 19.50 \\
-Claude Sonnet 4.5   & 34.88 & 15.07 & 41.51 & 18.24 & 29.99 &  9.19 & 37.82 & 17.80 & 44.51 & 25.93 \\
-Gemini 2.5 Pro	& 46.38 & 14.27 & 56.01 & 16.65 & 43.11 & 12.11 & 58.86 & 19.54 & 70.53 & 25.25 \\
-OpenAI GPT-5        & 14.20 &  3.98 & 20.10 &  5.52 & 11.80 &  3.31 & 24.60 &  6.92 & 27.90 &  8.84 \\
-OpenAI GPT-4.1      & 16.80 &  4.62 & 23.40 &  6.41 & 13.60 &  3.87 & 27.80 &  7.85 & 31.80 &  9.96 \\
-\bottomrule
-\end{tabular}%
-}
-\end{table}
-
-Reference to the Table \ref{tab:res} on page \pageref{tab:res} and a cite.
-
+\input{section/benchmark.tex}
 % ---------------------------------------------------------------
 
 
