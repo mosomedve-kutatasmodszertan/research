@@ -26,7 +26,7 @@ Two baseline models were trained to empirically isolate the causal effect of tra
     \item \textbf{Baseline $B_2$}: Trained exclusively on the High-Reliability Corpus ($\mathcal{D}_{\text{HR}}$).
 \end{itemize}
 
-Factual adherence was quantified via the \textbf{Hallucination Rate} ($\text{HR}$) \cite{islam2024comprehensive, cossio2025comprehensive}, defined as the proportion of generated responses containing at least one factually incorrect claim when benchmarked against the held-out, human-annotated Factual Test Set ($\mathcal{T}_{\text{Fact}}$). $\mathcal{T}_{\text{Fact}}$ consisted of evaluation prompts, sampled equally from the \textit{FEVER dataset} \cite{thorne2018fever} and the \textit{TruthfulQA benchmark} \cite{lin2021truthfulqa}. Expert annotators rated each model's output, achieving strong inter-annotator agreement.
+Factual adherence was quantified via the \textbf{Hallucination Rate} ($\text{HR}$) \cite{islam2024comprehensive, cossio2025comprehensive}, defined as the proportion of generated responses containing at least one factually incorrect claim when benchmarked against the held-out, human-annotated Factual Test Set ($\mathcal{T}_{\text{Fact}}$). $\mathcal{T}_{\text{Fact}}$ consisted of evaluation prompts, sampled equally from the \textit{FEVER dataset} \cite{thorne2018fever} and the \textit{TruthfulQA benchmark} \cite{lin2021truthfulqa}. This test set was exclusively utilized for internal benchmarking to measure the improvement gained over several stages of development. Expert annotators rated each model's output, achieving strong inter-annotator agreement.
 
 \subsection{Phase 2: Architectural Intervention and Evaluation}
 \label{sec:phase2_intervention}
