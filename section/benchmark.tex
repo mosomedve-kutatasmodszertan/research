@@ -12,7 +12,7 @@ In the above formula \textit{n} stands for the total number of samples, while $r
 \text{MaHR} = \frac{\text{Count}(\textit{hallucinatory responses})}{n}.
 \]
 In our tests we compared our own model to some of the current flagship Large Language Models by Meta \cite{Llama}, Mistral \cite{Mistral}, Anthropic \cite{Anthropic}, Google \cite{Gemini} and OpenAI \cite{OpenAI}.
-The first three rows of Table~\ref{tab:res} illustrate the progressive effect of our interventions. The \textbf{Base Model}, trained on low-reliability data, shows the highest hallucination rates across all domains. Switching to high-quality corpora (\textbf{Data Improvement}) yields a notable reduction in both MaHR and MiHR, highlighting the strong influence of training data reliability. Finally, our proposed architecture with the Layer-Specific Factual Gate (\textbf{Model Improvement}), trained on the same high-quality data, achieves the lowest hallucination rates overall, demonstrating the combined benefit of clean data and architectural enhancements.
+The first three rows of Table~\ref{tab:res} illustrate the progressive effect of our interventions. The \textbf{Base Model}, trained on low-reliability data, shows the highest hallucination rates across all domains. Switching to high-quality corpora (\textbf{Data Improvement}) yields a notable reduction in both MaHR and MiHR, highlighting the strong influence of training data reliability. Finally, our proposed architecture with the Layer-Specific Factual Gate (\textbf{Architecture Improvement}), trained on the same high-quality data, achieves the lowest hallucination rates overall, demonstrating the combined benefit of clean data and architectural enhancements.
 
 
 
@@ -51,7 +51,7 @@ The first three rows of Table~\ref{tab:res} illustrate the progressive effect of
   & \textbf{1.28} & \textbf{0.53}  
   & \textbf{1.31} & \textbf{0.59} \\
 
-\bfseries \textbf{Model Improvement}   
+\bfseries \textbf{Architecture Improvement}   
   & \textbf{0.44} & \textbf{0.11}  
   & \textbf{0.38} & \textbf{0.09}  
   & \textbf{0.42} & \textbf{0.08}  
